@@ -1,0 +1,7 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="24" fill="#0F1216"/>
+  <rect x="90" y="140" width="660" height="420" rx="16" fill="#171B22" stroke="#2B2F37"/>
+  <rect x="790" y="220" width="320" height="200" rx="16" fill="#171B22" stroke="#2B2F37"/>
+  <text x="94" y="610" fill="#D1D5DB" font-family="Inter, system-ui, Arial" font-size="24" font-weight="600">AI‑Powered Cloud Surveillance Platform</text>
+</svg>
+

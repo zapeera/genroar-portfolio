@@ -1,0 +1,14 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0C0D10"/>
+      <stop offset="100%" stop-color="#13151A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" rx="24" fill="url(#panel)"/>
+  <rect x="80" y="120" width="760" height="460" rx="16" fill="#1A1D24" stroke="#2B2F37"/>
+  <rect x="880" y="200" width="240" height="160" rx="14" fill="#1A1D24" stroke="#2B2F37"/>
+  <rect x="920" y="390" width="200" height="140" rx="12" fill="#1A1D24" stroke="#2B2F37"/>
+  <text x="84" y="620" fill="#D1D5DB" font-family="Inter, system-ui, Arial" font-size="24" font-weight="600">Scalable Event Management Software</text>
+</svg>
+

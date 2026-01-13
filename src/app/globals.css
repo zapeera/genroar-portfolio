@@ -1,0 +1,341 @@
+@import "tailwindcss";
+
+/* Tailwind v4 dark mode variant - REQUIRED for dark: classes to work */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --primary: #2F2FA2;
+  --primary-light: #EAE8FF;
+  --primary-dark: #1E1E7E;
+  --accent: #00C4B4;
+  --accent-light: #A7FFF8;
+  --accent-dark: #008C85;
+
+  /* Base colors for light mode */
+  --base-light: #ffffff;
+  --base-dark: #0B0C10;
+  --text-light: #1a1a1a;
+  --text-dark: #eaeaea;
+
+  /* Neutral colors for light mode */
+  --neutral-50: #f9fafb;
+  --neutral-100: #f3f4f6;
+  --neutral-200: #e5e7eb;
+  --neutral-300: #d1d5db;
+  --neutral-400: #9ca3af;
+  --neutral-500: #6b7280;
+  --neutral-600: #4b5563;
+  --neutral-700: #374151;
+  --neutral-800: #1f2937;
+  --neutral-900: #111827;
+}
+
+.dark,
+html.dark {
+  --background: #0B0C10;
+  --foreground: #eaeaea;
+  --base-light: #ffffff;
+  --base-dark: #0B0C10;
+  --text-light: #1a1a1a;
+  --text-dark: #eaeaea;
+
+  /* Neutral colors for dark mode */
+  --neutral-50: #1a1a2e;
+  --neutral-100: #1f2937;
+  --neutral-200: #374151;
+  --neutral-300: #4b5563;
+  --neutral-400: #6b7280;
+  --neutral-500: #9ca3af;
+  --neutral-600: #d1d5db;
+  --neutral-700: #e5e7eb;
+  --neutral-800: #f3f4f6;
+  --neutral-900: #ffffff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure dark mode is properly scoped */
+html.dark {
+  color-scheme: dark;
+}
+
+html:not(.dark) {
+  color-scheme: light;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neutral-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button gradient - Using CSS variables for original color scheme */
+.btn-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  background-size: 200% 200%;
+  transition: background-position 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease, background 0.4s ease, opacity 0.4s ease, backdrop-filter 0.4s ease;
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+  z-index: 1;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(135deg, rgba(47, 47, 162, 0.85) 0%, rgba(30, 30, 126, 0.85) 50%, rgba(0, 196, 180, 0.85) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0.95;
+  background-position: 100% 0;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(47, 47, 162, 0.4), 0 0 40px rgba(0, 196, 180, 0.3);
+}
+
+.btn-gradient:hover::before {
+  left: 100%;
+}
+
+.btn-gradient:active {
+  transform: translateY(0) scale(1);
+  box-shadow: 0 6px 20px rgba(47, 47, 162, 0.3);
+}
+
+/* Glass button with elegant gradient hover effect */
+.btn-glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--accent) 100%);
+  opacity: 0;
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  filter: blur(0px);
+}
+
+.btn-glass::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 16px 40px rgba(47, 47, 162, 0.35), 0 0 60px rgba(0, 196, 180, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.btn-glass:hover::before {
+  left: 0;
+  opacity: 0.75;
+}
+
+.btn-glass:hover::after {
+  left: 100%;
+}
+
+.btn-glass:active {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 8px 25px rgba(47, 47, 162, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Secondary button with transparent hover */
+.btn-secondary {
+  background: linear-gradient(to right, var(--accent), var(--accent-dark));
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(to right, rgba(0, 196, 180, 0.85), rgba(0, 140, 133, 0.85));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0.95;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 196, 180, 0.3), 0 0 40px rgba(0, 196, 180, 0.2);
+}
+
+.btn-secondary:active {
+  transform: translateY(0) scale(1);
+  box-shadow: 0 6px 20px rgba(0, 196, 180, 0.2);
+}
+
+/* Outline button with transparent gradient hover */
+.btn-outline {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.btn-outline:hover {
+  background: linear-gradient(to right, rgba(47, 47, 162, 0.8), rgba(0, 196, 180, 0.8));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(47, 47, 162, 0.3), 0 0 40px rgba(0, 196, 180, 0.2);
+}
+
+.btn-outline:active {
+  transform: translateY(0) scale(1);
+  box-shadow: 0 6px 20px rgba(47, 47, 162, 0.2);
+}
+
+/* Smooth transitions for theme switching */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Logo images - transparent background */
+img[alt="GENROAR Logo"],
+img[src*="whitel.png"],
+img[src*="blackl.png"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Fluid Typography - Automatically adjusts based on screen size */
+.text-fluid-xs {
+  font-size: clamp(0.75rem, 0.5vw + 0.7rem, 0.875rem);
+  line-height: 1.5;
+}
+
+.text-fluid-sm {
+  font-size: clamp(0.875rem, 0.7vw + 0.8rem, 1rem);
+  line-height: 1.5;
+}
+
+.text-fluid-base {
+  font-size: clamp(1rem, 0.8vw + 0.9rem, 1.125rem);
+  line-height: 1.6;
+}
+
+.text-fluid-lg {
+  font-size: clamp(1.125rem, 1vw + 1rem, 1.25rem);
+  line-height: 1.6;
+}
+
+.text-fluid-xl {
+  font-size: clamp(1.25rem, 1.2vw + 1.1rem, 1.5rem);
+  line-height: 1.5;
+}
+
+.text-fluid-2xl {
+  font-size: clamp(1.5rem, 1.5vw + 1.3rem, 2rem);
+  line-height: 1.4;
+}
+
+.text-fluid-3xl {
+  font-size: clamp(1.875rem, 2vw + 1.5rem, 2.5rem);
+  line-height: 1.3;
+}
+
+.text-fluid-4xl {
+  font-size: clamp(2.25rem, 2.5vw + 1.8rem, 3.5rem);
+  line-height: 1.2;
+}
+
+.text-fluid-5xl {
+  font-size: clamp(2.5rem, 3vw + 2rem, 4.5rem);
+  line-height: 1.1;
+}
+
+.text-fluid-6xl {
+  font-size: clamp(3rem, 3.5vw + 2.5rem, 5.5rem);
+  line-height: 1.1;
+}
+
+.text-fluid-7xl {
+  font-size: clamp(3.5rem, 4vw + 3rem, 6.5rem);
+  line-height: 1;
+}
+
+.text-fluid-8xl {
+  font-size: clamp(4rem, 5vw + 3.5rem, 8rem);
+  line-height: 1;
+}
+
+.text-fluid-9xl {
+  font-size: clamp(5rem, 6vw + 4rem, 10rem);
+  line-height: 1;
+}
+
+
+
+button.relative.overflow-hidden.rounded-full.bg-gradient-to-r.from-primary.via-accent.to-primary.bg-\[length\:200\%_100\%\].px-5.py-2.text-sm.font-semibold.text-white.transition-all.hover\:scale-105.hover\:shadow-\[0_0_20px_rgba\(47\,47\,162\,0\.5\)\].whitespace-nowrap {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+}

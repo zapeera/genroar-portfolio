@@ -1,0 +1,1724 @@
+"use client";
+import { motion } from "framer-motion";
+import { Lightbulb, Target, Rocket, TrendingUp, Award } from "lucide-react";
+
+const journeyStages = [
+  {
+    icon: Lightbulb,
+    title: "Ideation",
+    description: "Your innovative idea sparks the journey",
+    color: "from-yellow-400 to-orange-500",
+  },
+  {
+    icon: Target,
+    title: "Strategy",
+    description: "We plan the perfect roadmap",
+    color: "from-blue-500 to-indigo-600",
+  },
+  {
+    icon: Rocket,
+    title: "Development",
+    description: "Building with cutting-edge tech",
+    color: "from-purple-500 to-pink-600",
+  },
+  {
+    icon: TrendingUp,
+    title: "Launch",
+    description: "Going live with confidence",
+    color: "from-green-500 to-emerald-600",
+  },
+  {
+    icon: Award,
+    title: "Success",
+    description: "Achieving your business goals",
+    color: "from-primary to-accent",
+  },
+];
+
+export function BusinessJourney() {
+  return (
+    <section className="relative overflow-hidden bg-white py-20 dark:bg-[#0B0C10]">
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center"
+        >
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+            Your Business Journey
+          </h2>
+          <p className="text-lg text-gray-700 dark:text-neutral-300">
+            From idea to success — we're with you every step
+          </p>
+        </motion.div>
+
+        <div className="relative">
+          {/* Timeline Line */}
+          <div className="absolute left-0 top-1/2 hidden h-1 w-full -translate-y-1/2 bg-gradient-to-r from-primary via-accent to-primary lg:block" />
+
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5">
+            {journeyStages.map((stage, index) => {
+              const Icon = stage.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  className="relative"
+                >
+                  <div className="flex flex-col items-center text-center">
+                    <div className={`relative z-10 mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br ${stage.color} text-white shadow-lg`}>
+                      <Icon className="h-10 w-10" />
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.15 + 0.3 }}
+                        className="absolute inset-0 rounded-full border-4 border-white"
+                      />
+                    </div>
+                    <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                      {stage.title}
+                    </h3>
+                    <p className="text-sm text-gray-700 dark:text-neutral-300">
+                      {stage.description}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+"use client";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/Button";
+import { ImageReveal } from "@/components/ui/ImageReveal";
+import { CheckCircle2, TrendingUp, Zap } from "lucide-react";
+import Link from "next/link";
+
+export function CaseStudyHighlight() {
+  return (
+    <section className="relative overflow-hidden bg-white py-20 dark:bg-[#0B0C10]">
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center"
+        >
+          <span className="mb-4 inline-block rounded-full border-2 border-primary px-4 py-1 text-sm font-medium text-primary">
+            Featured Case Study
+          </span>
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+            AI-Powered Cloud Surveillance Platform
+          </h2>
+          <p className="text-lg text-gray-700 dark:text-neutral-300">
+            Transforming security operations with intelligent automation
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative h-96 overflow-hidden rounded-2xl lg:h-full"
+          >
+            <ImageReveal
+              src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800"
+              alt="AI Surveillance Platform"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/80 via-neutral-900/40 to-transparent" />
+          </motion.div>
+
+          {/* Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col justify-center"
+          >
+            <div className="mb-8 space-y-6">
+              <div>
+                <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
+                  The Challenge
+                </h3>
+                <p className="text-gray-700 dark:text-neutral-300">
+                  Manual review processes were time-consuming and error-prone. The client needed a scalable solution to monitor multiple locations simultaneously while reducing false positives and improving response times.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
+                  Our Solution
+                </h3>
+                <p className="text-gray-700 dark:text-neutral-300">
+                  We built an intelligent surveillance system leveraging AI and machine learning for real-time threat detection. The platform includes automated alerting, intelligent filtering, and seamless cloud integration.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="mb-3 text-xl font-semibold text-accent">
+                  The Impact
+                </h3>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                  <div className="rounded-lg border-2 border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-[#0B0C10]">
+                    <div className="mb-2 flex items-center gap-2 text-accent">
+                      <CheckCircle2 className="h-5 w-5" />
+                      <span className="text-2xl font-bold">50%</span>
+                    </div>
+                    <p className="text-xs text-gray-700 dark:text-neutral-300">
+                      Reduction in manual reviews
+                    </p>
+                  </div>
+                  <div className="rounded-lg border-2 border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-[#0B0C10]">
+                    <div className="mb-2 flex items-center gap-2 text-accent">
+                      <TrendingUp className="h-5 w-5" />
+                      <span className="text-2xl font-bold">3×</span>
+                    </div>
+                    <p className="text-xs text-gray-700 dark:text-neutral-300">
+                      Improvement in accuracy
+                    </p>
+                  </div>
+                  <div className="rounded-lg border-2 border-gray-200 bg-white p-4 dark:border-gray-800 dark:bg-[#0B0C10]">
+                    <div className="mb-2 flex items-center gap-2 text-accent">
+                      <Zap className="h-5 w-5" />
+                      <span className="text-2xl font-bold">40%</span>
+                    </div>
+                    <p className="text-xs text-gray-700 dark:text-neutral-300">
+                      Faster response times
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <Link href="/portfolio/ai-surveillance-platform">
+              <Button variant="primary" size="lg" className="w-full sm:w-auto">
+                View Full Case Study →
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+"use client";
+import { motion } from "framer-motion";
+
+const clients = [
+  "TechStart Inc.",
+  "Growth Labs",
+  "Innovate Co.",
+  "ScaleUp Solutions",
+  "Digital Ventures",
+  "NextGen Platforms",
+  "Future Tech",
+  "Cloud First",
+];
+
+export function ClientLogos() {
+  return (
+    <section className="bg-white py-20 dark:bg-[#0B0C10]">
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center"
+        >
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+            Trusted By Industry Leaders
+          </h2>
+          <p className="text-lg text-gray-700 dark:text-neutral-300">
+            We're proud to partner with innovative companies worldwide
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4">
+          {clients.map((client, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              whileHover={{ scale: 1.1 }}
+              className="flex h-24 items-center justify-center rounded-xl border-2 border-gray-200 bg-white text-center text-sm font-medium text-gray-700 opacity-60 grayscale transition-all hover:opacity-100 hover:grayscale-0 dark:border-gray-800 dark:bg-[#0B0C10] dark:text-neutral-300"
+            >
+              {client}
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+"use client";
+import { motion } from "framer-motion";
+import { ImageReveal } from "@/components/ui/ImageReveal";
+import { Users, Coffee, Code, Award, Globe, Zap } from "lucide-react";
+
+const cultureValues = [
+  {
+    icon: Users,
+    title: "Collaboration",
+    description: "We believe in the power of teamwork and open communication",
+  },
+  {
+    icon: Code,
+    title: "Innovation",
+    description: "Constantly learning and adopting cutting-edge technologies",
+  },
+  {
+    icon: Award,
+    title: "Excellence",
+    description: "Quality is non-negotiable in everything we deliver",
+  },
+  {
+    icon: Globe,
+    title: "Diversity",
+    description: "Building inclusive teams from around the world",
+  },
+  {
+    icon: Zap,
+    title: "Agility",
+    description: "Fast, flexible, and responsive to client needs",
+  },
+  {
+    icon: Coffee,
+    title: "Balance",
+    description: "Promoting healthy work-life balance for our team",
+  },
+];
+
+export function CompanyCulture() {
+  const galleryImages = [
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400",
+    "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400",
+    "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=400",
+  ];
+
+  return (
+    <section className="bg-white py-20 dark:bg-[#0B0C10]">
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center"
+        >
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+            Our Culture
+          </h2>
+          <p className="text-lg text-gray-700 dark:text-neutral-300">
+            Values that drive us every day
+          </p>
+        </motion.div>
+
+        {/* Culture Values Grid */}
+        <div className="mb-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {cultureValues.map((value, index) => {
+            const Icon = value.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="rounded-2xl border-2 border-gray-200 bg-white p-6 transition-all hover:border-primary hover:shadow-lg dark:border-gray-800 dark:bg-[#0B0C10]"
+              >
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent text-white">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                  {value.title}
+                </h3>
+                <p className="text-sm text-gray-700 dark:text-neutral-300">
+                  {value.description}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Image Gallery */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-2 gap-4 sm:grid-cols-4"
+        >
+          {galleryImages.map((src, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ scale: 1.05 }}
+              className="relative h-48 overflow-hidden rounded-xl"
+            >
+              <ImageReveal
+                src={src}
+                alt={`Team event ${index + 1}`}
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/Button";
+
+interface CTASectionProps {
+  title: string;
+  subtitle?: string;
+  primaryButtonText: string;
+  primaryButtonHref: string;
+  secondaryButtonText?: string;
+  secondaryButtonHref?: string;
+  variant?: "default" | "gradient";
+}
+
+export function CTASection({
+  title,
+  subtitle,
+  primaryButtonText,
+  primaryButtonHref,
+  secondaryButtonText,
+  secondaryButtonHref,
+  variant = "default",
+}: CTASectionProps) {
+  const bgClass = variant === "gradient" 
+    ? "bg-gradient-to-br from-primary via-primary/90 to-accent" 
+    : "bg-white dark:bg-[#0B0C10] transition-colors duration-300";
+
+  const textClass = variant === "gradient" ? "text-white" : "text-gray-900 dark:text-white";
+
+  return (
+    <section className={`${bgClass} py-20`}>
+      <div className="mx-auto max-w-4xl px-6 text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className={`mb-4 text-3xl font-bold sm:text-4xl md:text-5xl ${textClass}`}
+        >
+          {title}
+        </motion.h2>
+        
+        {subtitle && (
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className={`mb-8 text-lg ${variant === "gradient" ? "text-white/90" : "text-gray-700 dark:text-gray-300"}`}
+          >
+            {subtitle}
+          </motion.p>
+        )}
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+        >
+          <Button 
+            href={primaryButtonHref} 
+            variant={variant === "gradient" ? "secondary" : "primary"} 
+            size="lg"
+            className={variant === "gradient" ? "bg-white text-primary hover:bg-gray-100" : ""}
+          >
+            {primaryButtonText}
+          </Button>
+          {secondaryButtonText && secondaryButtonHref && (
+            <Button 
+              href={secondaryButtonHref} 
+              variant={variant === "gradient" ? "outline" : "outline"} 
+              size="lg"
+              className={variant === "gradient" ? "border-white text-white hover:bg-white hover:text-primary" : ""}
+            >
+              {secondaryButtonText}
+            </Button>
+          )}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+"use client";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/Button";
+import { BadgeCheck, TrendingUp, Users } from "lucide-react";
+
+interface EnhancedHeroProps {
+  headline: string;
+  subtext: string;
+  primaryButtonText: string;
+  primaryButtonHref: string;
+  secondaryButtonText: string;
+  secondaryButtonHref: string;
+}
+
+export function EnhancedHero({
+  headline,
+  subtext,
+  primaryButtonText,
+  primaryButtonHref,
+  secondaryButtonText,
+  secondaryButtonHref,
+}: EnhancedHeroProps) {
+  const trustBadges = [
+    { icon: BadgeCheck, text: "500+ Projects", color: "text-blue-500" },
+    { icon: TrendingUp, text: "100+ Startups", color: "text-green-500" },
+    { icon: Users, text: "200+ Clients", color: "text-purple-500" },
+  ];
+
+  return (
+    <section className="relative min-h-[90vh] overflow-hidden">
+      {/* Animated Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-accent">
+        <motion.div
+          animate={{
+            backgroundPosition: ["0% 0%", "100% 100%"],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+          className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%,transparent_100%),linear-gradient(-45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%,transparent_100%)] bg-[length:60px_60px] opacity-20"
+        />
+        {/* Particle Effect */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute h-1 w-1 rounded-full bg-white/30"
+              initial={{
+                x: `${Math.random() * 100}%`,
+                y: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [`${Math.random() * 100}%`, `${Math.random() * 100}%`],
+                opacity: [0.3, 0.8, 0.3],
+              }}
+              transition={{
+                duration: Math.random() * 3 + 2,
+                repeat: Infinity,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="relative z-10 mx-auto flex min-h-[90vh] max-w-7xl items-center px-6 py-20">
+        <div className="w-full text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mb-6"
+          >
+            <motion.span
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="inline-block rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm"
+            >
+              ✨ Turning Ideas Into Reality Since 2014
+            </motion.span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mb-6 text-5xl font-bold text-white sm:text-6xl md:text-7xl lg:text-8xl"
+          >
+            {headline}
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mb-10 text-xl leading-relaxed text-white/90 sm:text-2xl"
+          >
+            {subtext}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          >
+            <Button href={primaryButtonHref} variant="primary" size="lg" className="shadow-[0_0_30px_rgba(47,47,162,0.5)]">
+              {primaryButtonText}
+            </Button>
+            <Button href={secondaryButtonHref} variant="outline" size="lg" className="bg-white/10 text-white backdrop-blur-sm hover:bg-white/20">
+              {secondaryButtonText}
+            </Button>
+          </motion.div>
+
+          {/* Trust Badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="flex flex-wrap items-center justify-center gap-6"
+          >
+            {trustBadges.map((badge, index) => {
+              const Icon = badge.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
+                  className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm"
+                >
+                  <Icon className={`h-5 w-5 ${badge.color}`} />
+                  <span className="text-sm font-medium text-white">{badge.text}</span>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+"use client";
+import { motion } from "framer-motion";
+import { Accordion } from "@/components/ui/Accordion";
+import Link from "next/link";
+import { Button } from "@/components/ui/Button";
+
+const previewFAQs = [
+  {
+    question: "How quickly can you start our project?",
+    answer: "Typically within 1-2 weeks after a short discovery call. We'll align on scope, timeline, and approach, then kick off quickly.",
+  },
+  {
+    question: "Do you work with startups and SMBs?",
+    answer: "Yes! We specialize in helping startups and small to medium businesses. We offer flexible pricing and scalable solutions.",
+  },
+  {
+    question: "What's included in your development services?",
+    answer: "End-to-end development including planning, design, coding, testing, deployment, and ongoing support. We handle everything.",
+  },
+  {
+    question: "Can you integrate with our existing systems?",
+    answer: "Absolutely. We specialize in API integrations and can work with your current tech stack, tools, and workflows.",
+  },
+];
+
+export function FAQsPreview() {
+  return (
+    <section className="bg-gray-50 py-20 dark:bg-[#0B0C10] transition-colors duration-300">
+      <div className="mx-auto max-w-4xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center"
+        >
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-lg text-gray-700 dark:text-gray-300">
+            Quick answers to common questions
+          </p>
+        </motion.div>
+
+        <div className="mb-8 space-y-4">
+          {previewFAQs.map((faq, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <Accordion question={faq.question} answer={faq.answer} />
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center"
+        >
+          <Button href="/faq" variant="outline" size="lg">
+            View All FAQs →
+          </Button>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+"use client";
+import { motion } from "framer-motion";
+import { MapPin, Globe, Users, Clock } from "lucide-react";
+
+const offices = [
+  {
+    city: "San Francisco",
+    country: "USA",
+    icon: MapPin,
+  },
+  {
+    city: "London",
+    country: "UK",
+    icon: MapPin,
+  },
+  {
+    city: "Singapore",
+    country: "Singapore",
+    icon: MapPin,
+  },
+  {
+    city: "Remote",
+    country: "Worldwide",
+    icon: Globe,
+  },
+];
+
+export function GlobalPresence() {
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-white to-accent/10 py-20 dark:from-primary/20 dark:via-neutral-950 dark:to-accent/20">
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center"
+        >
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+            Global Presence
+          </h2>
+          <p className="text-lg text-gray-700 dark:text-neutral-300">
+            Serving clients worldwide with remote-first excellence
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {offices.map((office, index) => {
+            const Icon = office.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="rounded-2xl border-2 border-gray-200 bg-white p-6 text-center transition-all hover:border-primary hover:shadow-lg dark:border-gray-800 dark:bg-[#0B0C10]"
+              >
+                <div className="mb-4 flex justify-center">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-white">
+                    <Icon className="h-8 w-8" />
+                  </div>
+                </div>
+                <h3 className="mb-1 text-xl font-semibold text-gray-900 dark:text-white">
+                  {office.city}
+                </h3>
+                <p className="text-sm text-gray-700 dark:text-neutral-300">
+                  {office.country}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Additional Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-4"
+        >
+          <div className="text-center">
+            <div className="mb-2 text-3xl font-bold text-primary">24/7</div>
+            <p className="text-sm text-gray-700 dark:text-neutral-300">Support</p>
+          </div>
+          <div className="text-center">
+            <div className="mb-2 text-3xl font-bold text-primary">50+</div>
+            <p className="text-sm text-gray-700 dark:text-neutral-300">Countries</p>
+          </div>
+          <div className="text-center">
+            <div className="mb-2 text-3xl font-bold text-primary">15+</div>
+            <p className="text-sm text-gray-700 dark:text-neutral-300">Timezones</p>
+          </div>
+          <div className="text-center">
+            <div className="mb-2 text-3xl font-bold text-primary">200+</div>
+            <p className="text-sm text-gray-700 dark:text-neutral-300">Team Members</p>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/Button";
+
+interface HeroSectionProps {
+  headline: string;
+  subtext: string;
+  primaryButtonText: string;
+  primaryButtonHref: string;
+  secondaryButtonText?: string;
+  secondaryButtonHref?: string;
+}
+
+export function HeroSection({
+  headline,
+  subtext,
+  primaryButtonText,
+  primaryButtonHref,
+  secondaryButtonText,
+  secondaryButtonHref,
+}: HeroSectionProps) {
+  return (
+    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-primary/90 to-accent py-20">
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-cover bg-center" />
+      </div>
+      
+      <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-6 text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+        >
+          {headline}
+        </motion.h1>
+        
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl"
+        >
+          {subtext}
+        </motion.p>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+        >
+          <Button href={primaryButtonHref} variant="secondary" size="lg">
+            {primaryButtonText}
+          </Button>
+          {secondaryButtonText && secondaryButtonHref && (
+            <Button href={secondaryButtonHref} variant="outline" size="lg" className="bg-white/10 border-white text-white hover:bg-white hover:text-primary">
+              {secondaryButtonText}
+            </Button>
+          )}
+        </motion.div>
+      </div>
+      
+      <motion.div
+        animate={{
+          y: [0, -20, 0],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50"
+      >
+        <svg
+          className="h-8 w-8"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </motion.div>
+    </section>
+  );
+}
+
+"use client";
+import { motion } from "framer-motion";
+import { Linkedin, Twitter, Mail } from "lucide-react";
+
+const leaders = [
+  {
+    name: "Sarah Chen",
+    role: "CEO & Founder",
+    bio: "10+ years in product strategy and business development. Former VP at major tech companies.",
+    image: "👩‍💼",
+    linkedin: "#",
+    twitter: "#",
+    email: "sarah@genroar.com",
+  },
+  {
+    name: "Mike Rodriguez",
+    role: "CTO",
+    bio: "Full-stack architect with expertise in scalable systems. Led engineering teams at 3 startups.",
+    image: "👨‍💻",
+    linkedin: "#",
+    twitter: "#",
+    email: "mike@genroar.com",
+  },
+  {
+    name: "Alex Johnson",
+    role: "Head of Design",
+    bio: "UX/UI design leader with 8+ years creating award-winning user experiences.",
+    image: "👨‍🎨",
+    linkedin: "#",
+    twitter: "#",
+    email: "alex@genroar.com",
+  },
+  {
+    name: "Emily Davis",
+    role: "Growth Lead",
+    bio: "Marketing & growth strategist who's scaled 5+ products from 0 to millions in revenue.",
+    image: "👩‍💼",
+    linkedin: "#",
+    twitter: "#",
+    email: "emily@genroar.com",
+  },
+];
+
+export function LeadershipTeam() {
+  return (
+    <section className="bg-neutral-50 py-20 dark:bg-[#0B0C10]">
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center"
+        >
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+            Leadership Team
+          </h2>
+          <p className="text-lg text-gray-700 dark:text-neutral-300">
+            Meet the experts leading your success
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {leaders.map((leader, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="group rounded-2xl border-2 border-gray-200 bg-white p-6 text-center transition-all hover:border-primary hover:shadow-xl dark:border-gray-800 dark:bg-[#0B0C10]"
+            >
+              <div className="mb-4 flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-5xl mx-auto">
+                {leader.image}
+              </div>
+              <h3 className="mb-1 text-xl font-semibold text-gray-900 dark:text-white">
+                {leader.name}
+              </h3>
+              <p className="mb-3 text-sm font-medium text-primary">{leader.role}</p>
+              <p className="mb-4 text-sm leading-relaxed text-gray-700 dark:text-neutral-300">
+                {leader.bio}
+              </p>
+              <div className="flex items-center justify-center gap-2 opacity-0 transition-opacity group-hover:opacity-100">
+                <a
+                  href={leader.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-neutral-300 text-neutral-600 transition-all hover:border-primary hover:bg-primary hover:text-white dark:border-neutral-700 dark:text-neutral-400"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </a>
+                <a
+                  href={leader.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-neutral-300 text-neutral-600 transition-all hover:border-primary hover:bg-primary hover:text-white dark:border-neutral-700 dark:text-neutral-400"
+                  aria-label="Twitter"
+                >
+                  <Twitter className="h-4 w-4" />
+                </a>
+                <a
+                  href={`mailto:${leader.email}`}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-neutral-300 text-neutral-600 transition-all hover:border-primary hover:bg-primary hover:text-white dark:border-neutral-700 dark:text-neutral-400"
+                  aria-label="Email"
+                >
+                  <Mail className="h-4 w-4" />
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+"use client";
+import { motion } from "framer-motion";
+import { ImageReveal } from "@/components/ui/ImageReveal";
+import { Calendar, Target, Rocket, Award } from "lucide-react";
+
+const milestones = [
+  {
+    year: "2014",
+    title: "Founded",
+    description: "Started with a mission to help startups turn ideas into reality",
+    icon: Calendar,
+  },
+  {
+    year: "2017",
+    title: "100 Projects",
+    description: "Reached our first major milestone of 100 successful projects",
+    icon: Target,
+  },
+  {
+    year: "2020",
+    title: "AI Integration",
+    description: "Expanded into AI and automation services",
+    icon: Rocket,
+  },
+  {
+    year: "2024",
+    title: "500+ Projects",
+    description: "Celebrated 500+ projects delivered with excellence",
+    icon: Award,
+  },
+];
+
+export function OurStory() {
+  return (
+    <section className="bg-white py-20 dark:bg-[#0B0C10] transition-colors duration-300">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+              Our Story
+            </h2>
+            <div className="space-y-4 text-lg leading-relaxed text-gray-800 dark:text-gray-300">
+              <p>
+                Founded in 2014, genroar began with a simple yet powerful mission: to help entrepreneurs and small businesses transform their boldest ideas into successful, scalable products. We saw too many great concepts fail not because they were bad ideas, but because they lacked the right expertise, strategy, or execution.
+              </p>
+              <p>
+                What started as a small team of passionate developers and strategists has grown into a full-service agency with expertise spanning business planning, product development, web and mobile applications, marketing, AI, and security. Over the years, we've helped 200+ clients across various industries launch products that have gone on to raise millions in funding and serve millions of users.
+              </p>
+              <p>
+                Today, we're proud to be a trusted partner for startups and SMBs worldwide, combining deep technical expertise with strategic business acumen to deliver solutions that don't just work—they drive real business growth.
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative h-full min-h-[500px] overflow-hidden rounded-2xl"
+          >
+            <ImageReveal
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800"
+              alt="Our team"
+              fill
+              className="object-cover"
+            />
+          </motion.div>
+        </div>
+
+        {/* Milestones Timeline */}
+        <div className="mt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-12 text-center"
+          >
+            <h3 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
+              Key Milestones
+            </h3>
+          </motion.div>
+
+          <div className="relative">
+            <div className="absolute left-0 top-0 hidden h-full w-1 bg-gradient-to-b from-primary via-accent to-primary lg:block" style={{ left: '50%', transform: 'translateX(-50%)' }} />
+            
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+              {milestones.map((milestone, index) => {
+                const Icon = milestone.icon;
+                const isLeft = index % 2 === 0;
+                
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className={`relative ${isLeft ? 'lg:pr-12 lg:text-right' : 'lg:pl-12 lg:col-start-2'}`}
+                  >
+                    <div className={`flex items-start gap-4 ${isLeft ? 'flex-row-reverse lg:flex-row-reverse' : ''}`}>
+                      <div className="flex shrink-0 items-center gap-3">
+                        <div className={`flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-white shadow-lg ${isLeft ? 'lg:ml-auto' : ''}`}>
+                          <Icon className="h-8 w-8" />
+                        </div>
+                        <div className={`hidden text-4xl font-bold text-primary lg:block ${isLeft ? 'order-first' : ''}`}>
+                          {milestone.year}
+                        </div>
+                      </div>
+                      <div className={`flex-1 ${isLeft ? 'lg:text-right' : ''}`}>
+                        <div className="mb-2 text-xl font-semibold text-gray-900 dark:text-white lg:hidden">
+                          {milestone.year}
+                        </div>
+                        <h4 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                          {milestone.title}
+                        </h4>
+                        <p className="text-sm text-gray-700 dark:text-gray-300">
+                          {milestone.description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+"use client";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/Button";
+import { ParallaxSection } from "@/components/ui/ParallaxSection";
+import { ImageReveal } from "@/components/ui/ImageReveal";
+
+export function ParallaxCTA() {
+  return (
+    <section className="relative min-h-[600px] overflow-hidden">
+      <ParallaxSection speed={0.3} className="absolute inset-0">
+        <ImageReveal
+          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600"
+          alt="Team collaboration"
+          fill
+          className="object-cover"
+        />
+      </ParallaxSection>
+      
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/80 to-accent/90" />
+      
+      <div className="relative z-10 mx-auto flex min-h-[600px] max-w-7xl items-center px-6 py-20">
+        <div className="w-full text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-6 text-4xl font-bold text-white sm:text-5xl md:text-6xl"
+          >
+            Let's Build Something Great Together
+          </motion.h2>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-10 text-xl leading-relaxed text-white/90 sm:text-2xl"
+          >
+            Ready to turn your idea into reality? Get in touch and let's start your journey.
+          </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+          >
+            <Button 
+              href="/contact" 
+              variant="primary" 
+              size="lg" 
+              className="bg-white text-primary shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:bg-neutral-100"
+            >
+              Get Started
+            </Button>
+            <Button 
+              href="/contact" 
+              variant="outline" 
+              size="lg" 
+              className="bg-white/10 border-white text-white backdrop-blur-sm hover:bg-white/20"
+            >
+              Schedule a Call
+            </Button>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import { CheckCircle2 } from "lucide-react";
+
+interface ProcessStep {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface ProcessSectionProps {
+  title?: string;
+  subtitle?: string;
+  steps: ProcessStep[];
+}
+
+export function ProcessSection({
+  title = "Our Process",
+  subtitle = "A clear, collaborative process from idea to launch.",
+  steps,
+}: ProcessSectionProps) {
+  return (
+    <section className="bg-white py-20 dark:bg-[#0B0C10] transition-colors duration-300">
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center"
+        >
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+            {title}
+          </h2>
+          {subtitle && (
+            <p className="text-lg text-gray-700 dark:text-gray-300">
+              {subtitle}
+            </p>
+          )}
+        </motion.div>
+
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-8 top-0 hidden h-full w-0.5 bg-gradient-to-b from-primary to-accent md:block" />
+
+          <div className="space-y-12">
+            {steps.map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="relative flex items-start gap-6"
+              >
+                {/* Step number circle */}
+                <div className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-white shadow-lg">
+                  <span className="text-2xl font-bold">{step.number}</span>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 pt-2">
+                  <h3 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-700 dark:text-gray-300">
+                    {step.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+"use client";
+import { motion } from "framer-motion";
+import { StatsCounter } from "@/components/ui/StatsCounter";
+
+interface Stat {
+  value: number;
+  suffix?: string;
+  prefix?: string;
+  label: string;
+}
+
+interface StatsSectionProps {
+  stats: Stat[];
+  title?: string;
+  subtitle?: string;
+}
+
+export function StatsSection({ stats, title = "Our Impact", subtitle = "Results that speak for themselves" }: StatsSectionProps) {
+  return (
+    <section className="bg-gradient-to-br from-primary via-primary/90 to-accent py-20">
+      <div className="mx-auto max-w-7xl px-6">
+        {title && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-12 text-center"
+          >
+            <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
+              {title}
+            </h2>
+            {subtitle && (
+              <p className="text-lg text-white/90">
+                {subtitle}
+              </p>
+            )}
+          </motion.div>
+        )}
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="text-center"
+            >
+              <div className="mb-2 text-4xl font-bold text-white sm:text-5xl">
+                <StatsCounter value={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
+              </div>
+              <p className="text-sm text-white/90">{stat.label}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+"use client";
+import { motion } from "framer-motion";
+import { Linkedin, Twitter, Mail } from "lucide-react";
+import Link from "next/link";
+
+const teamMembers = [
+  {
+    name: "Sarah Chen",
+    role: "CEO & Founder",
+    image: "👩‍💼",
+    bio: "10+ years in product strategy",
+    linkedin: "#",
+    twitter: "#",
+  },
+  {
+    name: "Mike Rodriguez",
+    role: "CTO",
+    image: "👨‍💻",
+    bio: "Full-stack architect expert",
+    linkedin: "#",
+    twitter: "#",
+  },
+  {
+    name: "Alex Johnson",
+    role: "Head of Design",
+    image: "👨‍🎨",
+    bio: "UX/UI design leader",
+    linkedin: "#",
+    twitter: "#",
+  },
+  {
+    name: "Emily Davis",
+    role: "Growth Lead",
+    image: "👩‍💼",
+    bio: "Marketing & growth strategist",
+    linkedin: "#",
+    twitter: "#",
+  },
+];
+
+export function TeamPreview() {
+  return (
+    <section className="bg-white py-20 dark:bg-[#0B0C10]">
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center"
+        >
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+            Meet Our Team
+          </h2>
+          <p className="text-lg text-gray-700 dark:text-neutral-300">
+            Expert professionals dedicated to your success
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {teamMembers.map((member, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="group relative rounded-2xl border-2 border-gray-200 bg-white p-6 text-center transition-all hover:border-primary hover:shadow-lg dark:border-gray-800 dark:bg-[#0B0C10]"
+            >
+              <div className="mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-4xl mx-auto">
+                {member.image}
+              </div>
+              <h3 className="mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                {member.name}
+              </h3>
+              <p className="mb-3 text-sm text-primary">{member.role}</p>
+              <p className="mb-4 text-xs text-gray-700 dark:text-neutral-300">
+                {member.bio}
+              </p>
+              <div className="flex items-center justify-center gap-3 opacity-0 transition-opacity group-hover:opacity-100">
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-neutral-300 text-neutral-600 transition-all hover:border-primary hover:bg-primary hover:text-white dark:border-neutral-700 dark:text-neutral-400"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </a>
+                <a
+                  href={member.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-neutral-300 text-neutral-600 transition-all hover:border-primary hover:bg-primary hover:text-white dark:border-neutral-700 dark:text-neutral-400"
+                >
+                  <Twitter className="h-4 w-4" />
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-12 text-center"
+        >
+          <Link
+            href="/about"
+            className="text-primary hover:text-accent transition-colors font-medium"
+          >
+            View Full Team →
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+"use client";
+import { motion } from "framer-motion";
+
+const technologies = [
+  "Next.js", "React", "TypeScript", "Node.js", "Python",
+  "AWS", "Docker", "PostgreSQL", "MongoDB", "GraphQL",
+  "Tailwind CSS", "Framer Motion", "TensorFlow", "Kubernetes",
+];
+
+export function TechnologyStack() {
+  return (
+    <section className="relative overflow-hidden bg-white py-20 dark:bg-[#0B0C10]">
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center"
+        >
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+            Technology & Tools
+          </h2>
+          <p className="text-lg text-gray-700 dark:text-neutral-300">
+            Modern tech stack for cutting-edge solutions
+          </p>
+        </motion.div>
+
+        <div className="flex flex-wrap items-center justify-center gap-4">
+          {technologies.map((tech, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              whileHover={{ scale: 1.1, y: -5 }}
+              className="rounded-xl border-2 border-gray-200 bg-white px-6 py-3 text-sm font-medium text-gray-700 shadow-sm transition-all hover:border-primary hover:shadow-[0_0_15px_rgba(47,47,162,0.3)] dark:border-gray-800 dark:bg-[#0B0C10] dark:text-neutral-300"
+            >
+              {tech}
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import type { Testimonial } from "@/data/testimonials";
+
+interface TestimonialsSectionProps {
+  testimonials: Testimonial[];
+  title?: string;
+  subtitle?: string;
+}
+
+export function TestimonialsSection({
+  testimonials,
+  title = "What Our Clients Say",
+  subtitle = "Real feedback from real projects.",
+}: TestimonialsSectionProps) {
+  return (
+    <section className="bg-gray-50 py-20 dark:bg-[#0B0C10] transition-colors duration-300">
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center"
+        >
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+            {title}
+          </h2>
+          {subtitle && (
+            <p className="text-lg text-gray-700 dark:text-gray-300">
+              {subtitle}
+            </p>
+          )}
+        </motion.div>
+
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {testimonials.slice(0, 6).map((testimonial, index) => (
+            <motion.div
+              key={testimonial.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="rounded-2xl border-2 border-gray-200 bg-white p-6 shadow-md hover:shadow-lg transition-all dark:border-gray-800 dark:bg-[#111]"
+            >
+              <p className="mb-4 text-sm italic leading-relaxed text-gray-700 dark:text-gray-300">
+                "{testimonial.quote}"
+              </p>
+              <div className="border-t border-gray-200 pt-4 dark:border-gray-800">
+                <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                  {testimonial.author}
+                </p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">
+                  {testimonial.role}, {testimonial.company}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+"use client";
+import { motion } from "framer-motion";
+import { StatsCounter } from "@/components/ui/StatsCounter";
+import { CheckCircle2, Zap, Users, Shield } from "lucide-react";
+
+const benefits = [
+  {
+    icon: Zap,
+    title: "Fast Delivery",
+    description: "Senior teams deliver 50% faster than industry average",
+  },
+  {
+    icon: Users,
+    title: "Expert Team",
+    description: "10+ years experience, 500+ projects completed",
+  },
+  {
+    icon: Shield,
+    title: "Quality Assured",
+    description: "99% client satisfaction, rigorous testing standards",
+  },
+  {
+    icon: CheckCircle2,
+    title: "Full Support",
+    description: "End-to-end services from strategy to growth",
+  },
+];
+
+export function WhyChooseUs() {
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-white to-accent/5 py-20 dark:from-primary/10 dark:via-[#0B0C10] dark:to-accent/10 transition-colors duration-300">
+      <div className="mx-auto max-w-7xl px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center"
+        >
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl">
+            Why Choose Us
+          </h2>
+          <p className="text-lg text-gray-700 dark:text-gray-300">
+            Results-driven expertise you can trust
+          </p>
+        </motion.div>
+
+        {/* Stats Row */}
+        <div className="mb-16 grid grid-cols-2 gap-6 sm:grid-cols-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <div className="mb-2 text-4xl font-bold text-primary sm:text-5xl">
+              <StatsCounter value={10} suffix="+" /> Years
+            </div>
+            <p className="text-sm text-gray-700 dark:text-gray-300">Experience</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-center"
+          >
+            <div className="mb-2 text-4xl font-bold text-primary sm:text-5xl">
+              <StatsCounter value={500} suffix="+" /> Projects
+            </div>
+            <p className="text-sm text-gray-700 dark:text-gray-300">Delivered</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-center"
+          >
+            <div className="mb-2 text-4xl font-bold text-primary sm:text-5xl">
+              <StatsCounter value={200} suffix="+" /> Clients
+            </div>
+            <p className="text-sm text-gray-700 dark:text-gray-300">Satisfied</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center"
+          >
+            <div className="mb-2 text-4xl font-bold text-primary sm:text-5xl">
+              <StatsCounter value={50} suffix="%" /> Faster
+            </div>
+            <p className="text-sm text-gray-700 dark:text-gray-300">Delivery</p>
+          </motion.div>
+        </div>
+
+        {/* Benefits Grid */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {benefits.map((benefit, index) => {
+            const Icon = benefit.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="rounded-2xl border-2 border-gray-200 bg-white p-6 transition-all hover:border-primary hover:shadow-lg dark:border-gray-800 dark:bg-[#111]"
+              >
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent text-white">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+                  {benefit.title}
+                </h3>
+                <p className="text-sm text-gray-700 dark:text-gray-300">
+                  {benefit.description}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
