@@ -6,7 +6,6 @@ import { ImageReveal } from "@/components/ui/ImageReveal";
 import { ImageOverlay } from "@/components/ui/ImageOverlay";
 import { Container } from "@/components/layout/Container";
 import Link from "next/link";
-import { useState } from "react";
 import { CTASection } from "@/components/sections/CTASection";
 
 const allProjects = [
@@ -62,15 +61,8 @@ const allProjects = [
 
 ];
 
-const categories = ["All", "Web", "Mobile", "AI", "Marketing"];
-
 export default function PortfolioPage() {
-	const [activeFilter, setActiveFilter] = useState("All");
-
-	const filteredProjects =
-		activeFilter === "All"
-			? allProjects
-			: allProjects.filter((project) => project.category === activeFilter);
+	const filteredProjects = allProjects;
 
 	return (
 		<main>
@@ -128,33 +120,12 @@ export default function PortfolioPage() {
 				</Container>
 			</section>
 
-			{/* Filter Tabs */}
-			<section className="sticky top-16 z-40 border-b border-gray-200 bg-white/95 backdrop-blur-sm py-3 sm:py-4 dark:border-gray-800 dark:bg-[#0B0C10]/95 transition-colors duration-300">
-				<Container>
-					<div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-						{categories.map((category) => (
-							<button
-								key={category}
-								onClick={() => setActiveFilter(category)}
-								className={`rounded-full px-4 py-1.5 sm:px-6 sm:py-2 text-xs sm:text-sm font-medium transition-all ${
-									activeFilter === category
-										? "bg-gradient-to-r from-primary to-accent text-black dark:text-white shadow-lg"
-										: "border-2 border-gray-300 bg-white t text-gray-900 hover:border-primary hover:text-primary dark:border-gray-700 dark:bg-[#111] dark:text-gray-200"
-								}`}
-							>
-								{category}
-							</button>
-						))}
-					</div>
-				</Container>
-			</section>
-
 			{/* Projects Grid */}
 			<section className="bg-white py-16 sm:py-20 md:py-24 dark:bg-[#0B0C10] transition-colors duration-300">
 				<Container>
 					<AnimatePresence mode="wait">
 						<motion.div
-							key={activeFilter}
+							key="all-projects"
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							exit={{ opacity: 0, y: -20 }}
