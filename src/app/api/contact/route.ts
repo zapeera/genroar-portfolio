@@ -1,12 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import type { Attachment } from 'nodemailer/lib/mailer';
+
+type IncomingAttachment = {
+  data: string;
+  filename: string;
+  contentType?: string;
+};
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const isJobApplication = body.type === "job_application";
     const messageContent = body.message || body.coverLetter || "";
-    
+
     // Validate required fields
     if (!body.name || !body.email || !messageContent) {
       return NextResponse.json(
@@ -18,32 +25,32 @@ export async function POST(request: NextRequest) {
     // Get email credentials from environment variables
     const GMAIL_USER = process.env.GMAIL_USER || 'info.genroar7@gmail.com';
     const GMAIL_PASS = process.env.GMAIL_APP_PASSWORD; // Gmail App Password
-    
+
     // Get multiple recipient emails (comma-separated)
     const RECIPIENT_EMAILS = process.env.RECIPIENT_EMAILS || GMAIL_USER;
-    
+
     // Parse multiple emails (comma-separated string to array)
     const recipientEmails = RECIPIENT_EMAILS.split(',')
       .map(email => email.trim())
       .filter(email => email.length > 0);
-    
+
     if (!GMAIL_PASS) {
       console.error('GMAIL_APP_PASSWORD is not set in environment variables');
       return NextResponse.json(
-        { 
-          error: 'Email service not configured', 
-          message: 'Please configure Gmail credentials in environment variables' 
+        {
+          error: 'Email service not configured',
+          message: 'Please configure Gmail credentials in environment variables'
         },
         { status: 500 }
       );
     }
-    
+
     if (recipientEmails.length === 0) {
       console.error('No recipient emails configured');
       return NextResponse.json(
-        { 
-          error: 'Email service not configured', 
-          message: 'Please configure recipient emails in environment variables' 
+        {
+          error: 'Email service not configured',
+          message: 'Please configure recipient emails in environment variables'
         },
         { status: 500 }
       );
@@ -62,17 +69,17 @@ export async function POST(request: NextRequest) {
     const emailSubject = isJobApplication
       ? `New Job Application${body.jobTitle ? ` - ${body.jobTitle}` : ''}`
       : `New Contact Form Submission - ${body.service || 'General Inquiry'}`;
-    
-    const attachments = Array.isArray(body.attachments)
-      ? body.attachments
-          .filter((att: any) => att?.data && att?.filename)
-          .map((att: any) => ({
+
+    const attachments: Attachment[] = Array.isArray(body.attachments)
+      ? (body.attachments as IncomingAttachment[])
+          .filter((att) => att?.data && att?.filename)
+          .map((att) => ({
             filename: att.filename,
             content: Buffer.from(att.data, 'base64'),
             contentType: att.contentType || 'application/octet-stream',
           }))
       : [];
-    
+
     const emailHtml = `
       <!DOCTYPE html>
       <html>
@@ -99,19 +106,19 @@ export async function POST(request: NextRequest) {
                 <div class="label">Name:</div>
                 <div class="value">${body.name}</div>
               </div>
-              
+
               <div class="field">
                 <div class="label">Email:</div>
                 <div class="value">${body.email}</div>
               </div>
-              
+
               ${body.phone ? `
               <div class="field">
                 <div class="label">Phone:</div>
                 <div class="value">${body.phone}</div>
               </div>
               ` : ''}
-              
+
               ${isJobApplication && body.jobTitle ? `
               <div class="field">
                 <div class="label">Job Title:</div>
@@ -132,14 +139,14 @@ export async function POST(request: NextRequest) {
                 <div class="value">${body.company}</div>
               </div>
               ` : ''}
-              
+
               ${!isJobApplication && body.service ? `
               <div class="field">
                 <div class="label">Service Interested In:</div>
                 <div class="value">${body.service}</div>
               </div>
               ` : ''}
-              
+
               <div class="field">
                 <div class="label">${isJobApplication ? 'Cover Letter' : 'Message'}:</div>
                 <div class="message-box">${messageContent.replace(/\n/g, '<br>')}</div>
@@ -193,26 +200,24 @@ Submitted on: ${new Date().toLocaleString()}
     };
 
     await transporter.sendMail(mailOptions);
-    
+
     console.log(`Email sent successfully to ${recipientEmails.length} recipient(s): ${recipientEmails.join(', ')}`);
 
     return NextResponse.json(
-      { 
-        success: true, 
-        message: 'Form submitted successfully. We will get back to you soon!' 
+      {
+        success: true,
+        message: 'Form submitted successfully. We will get back to you soon!'
       },
       { status: 200 }
     );
   } catch (error) {
     console.error('Error submitting contact form:', error);
     return NextResponse.json(
-      { 
-        error: 'Failed to submit form', 
-        message: error instanceof Error ? error.message : 'Unknown error occurred. Please try again or contact us directly at info.genroar7@gmail.com' 
+      {
+        error: 'Failed to submit form',
+        message: error instanceof Error ? error.message : 'Unknown error occurred. Please try again or contact us directly at info.genroar7@gmail.com'
       },
       { status: 500 }
     );
   }
 }
-
-
