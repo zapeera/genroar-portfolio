@@ -23,11 +23,11 @@ export async function POST(request: NextRequest) {
     }
 
     // Get email credentials from environment variables
-    const GMAIL_USER = process.env.GMAIL_USER || 'info.genroar7@gmail.com';
+    const GMAIL_USER = process.env.GMAIL_USER || 'infor@genroar.com';
     const GMAIL_PASS = process.env.GMAIL_APP_PASSWORD; // Gmail App Password
 
     // Get multiple recipient emails (comma-separated)
-    const RECIPIENT_EMAILS = process.env.RECIPIENT_EMAILS || GMAIL_USER;
+    const RECIPIENT_EMAILS = process.env.RECIPIENT_EMAILS || 'codewithpassion7@gmail.com';
 
     // Parse multiple emails (comma-separated string to array)
     const recipientEmails = RECIPIENT_EMAILS.split(',')

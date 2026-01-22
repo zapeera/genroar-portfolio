@@ -98,8 +98,8 @@ export default function ContactPage() {
 			console.error("Error submitting form:", error);
 			setSubmitStatus("error");
 			setErrorMessage(
-				error instanceof Error 
-					? error.message 
+				error instanceof Error
+					? error.message
 					: "Failed to send message. Please try again or contact us directly at info.genroar7@gmail.com"
 			);
 		} finally {
@@ -304,7 +304,7 @@ export default function ContactPage() {
 										className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20 dark:border-gray-700 dark:bg-[#0B0C10] dark:text-white"
 									/>
 								</div>
-								
+
 								{/* Success Message */}
 								{submitStatus === "success" && (
 									<motion.div
@@ -329,10 +329,10 @@ export default function ContactPage() {
 									</motion.div>
 								)}
 
-								<Button 
-									type="submit" 
-									variant="primary" 
-									size="lg" 
+								<Button
+									type="submit"
+									variant="primary"
+									size="lg"
 									className="w-full"
 									disabled={isSubmitting}
 								>

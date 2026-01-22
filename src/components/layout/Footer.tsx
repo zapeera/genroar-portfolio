@@ -21,16 +21,16 @@ export default function Footer() {
 			}
 		};
 		checkTheme();
-		
+
 		const handleThemeChange = () => checkTheme();
 		window.addEventListener("themechange", handleThemeChange);
-		
+
 		const observer = new MutationObserver(() => checkTheme());
 		observer.observe(document.documentElement, {
 			attributes: true,
 			attributeFilter: ["class"],
 		});
-		
+
 		return () => {
 			window.removeEventListener("themechange", handleThemeChange);
 			observer.disconnect();
@@ -71,7 +71,7 @@ export default function Footer() {
 										width={240}
 										height={10}
 										className=" object-contain"
-										style={{ 
+										style={{
 											background: 'transparent',
 											backgroundColor: 'transparent',
 											mixBlendMode: 'normal'
